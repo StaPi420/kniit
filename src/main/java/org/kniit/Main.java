@@ -2,7 +2,11 @@ package org.kniit;
 
 public class Main {
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args){
+        for (int i = 1; i <= 100; ++i){
+            String line = "";
+            line = i + (i % 10 == 0 ? "\n" : ", ");
+            System.out.print(line);
+        }
     }
 }
