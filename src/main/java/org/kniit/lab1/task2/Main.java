@@ -5,12 +5,8 @@ package org.kniit.lab1.task2;
 
 public class Main {
     public static void main(String[] args){
-        SimpleURL url = new SimpleURL();
-
-        url.setProtocol("https");
-        url.setAdress("javarush.com");
-        url.setWebPageName("groups/posts/1928-getterih-i-setterih");
-
+        String strURL = "https://test.ru/test/1072/page.jsp?intParam=12345&doubleParam=3.14&textParameter=someText";
+        SimpleURL url = new SimpleURL(strURL);
         System.out.println(url);
     }
 }
