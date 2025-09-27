@@ -132,12 +132,12 @@ public class SimpleURL {
     public String toString(){
         String url = this.getProtocol() + "://" + this.getAdress();
         String pathToPage = this.getPathToPage();
-        if (pathToPage.length() > 0){
+        if (!pathToPage.isEmpty()){
             url += "/" + pathToPage;
         }
         url += "/" + this.getWebPageName();
         String params = this.getParams();
-        if (params.length() > 0){
+        if (!params.isEmpty()){
             url += "?" + params;
         }
         return url;
