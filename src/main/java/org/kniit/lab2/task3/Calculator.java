@@ -36,7 +36,23 @@ public class Calculator {
             System.out.println("Ошибка! Деление на 0 невозможно.");
     }
 
+    public void calculate(){
+        if (this.operation.equals("+")){
+            this.add();
+        }
+        else if (this.operation.equals("-")){
+            this.subtract();
+        }
+        else if (this.operation.equals("*")){
+            this.multiply();
+        }
+        else if (this.operation.equals("/")){
+            this.divide();
+        }
+    }
+
     public String toString(){
+        calculate();
         return String.valueOf(this.result);
     }
 
