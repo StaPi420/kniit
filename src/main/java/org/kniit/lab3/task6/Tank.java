@@ -8,6 +8,7 @@ public class Tank extends Warrior{
         this.curHP = this.maxHP;
         this.damage -= 2;
         this.defence += 1;
+        this.moveDistance -= 1;
     }
     
     @Override

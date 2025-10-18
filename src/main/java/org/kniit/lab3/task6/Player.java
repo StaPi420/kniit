@@ -6,17 +6,22 @@ import org.kniit.lab3.task6.races.Dwarf;
 
 public abstract class Player {
     protected String name;
-    protected int curHP, maxHP, pos_x, pos_y, damage, defence, heal, moveDistance;
+    protected int curHP, maxHP, pos_x, pos_y, damage, defence, heal, moveDistance, range;
     protected Race race;
     protected boolean isAlive = true;
 
-    public Player(int maxHP, int damage, int defence, int heal, String name){
+    public Player(int maxHP, int damage, int defence, int heal, int moveDistance, int range, String name){
         this.name = name;
         this.maxHP = maxHP;
         this.curHP = maxHP;
         this.damage = damage;
         this.defence = defence;
         this.heal = heal;
+        this.moveDistance = moveDistance;
+    }
+
+    public boolean isAlive(){
+        return this.isAlive;
     }
 
     private void setRaceBonuses(){
@@ -40,6 +45,11 @@ public abstract class Player {
     public void setElfRace(){
         this.race = new Elf();
         this.setRaceBonuses();
+    }
+
+    public void setPos(int x, int y){
+        this.pos_x = x;
+        this.pos_y = y;
     }
 
     public void movePlayer(int x, int y){
@@ -67,6 +77,33 @@ public abstract class Player {
     }
 
     abstract String getPlayerClass();
+
+    public int getPosX(){
+        return this.pos_x;
+    }
+
+    public int getPosY(){
+        return this.pos_y;
+    }
+
+    public int getRange(){
+        return this.range;
+    }
+
+    public void attack(Player otherPlayer){
+        int manhattanDistance = Math.abs(this.pos_x - otherPlayer.pos_x) + Math.abs(this.pos_y - otherPlayer.pos_y);
+        if (manhattanDistance <= this.range){
+            int damage = -(this.damage > otherPlayer.defence ? this.damage : this.damage / 2);
+            otherPlayer.changeHP(damage);
+        } 
+        else {
+            System.out.println("Мимо!");
+        }
+    }
+
+    public void castHealing(Player player){
+        player.changeHP(this.heal);
+    }
 
 @Override
 public String toString() {
