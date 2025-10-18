@@ -9,4 +9,20 @@ public class Race {
         this.defenceBonus = defenceBonus;
         this.healBonus = healBonus;
     }
+
+    public int getHPbonus() {
+        return HPbonus;
+    }
+
+    public int getDamageBonus() {
+        return damageBonus;
+    }
+
+    public int getDefenceBonus() {
+        return defenceBonus;
+    }
+
+    public int getHealBonus() {
+        return healBonus;
+    }
 }
