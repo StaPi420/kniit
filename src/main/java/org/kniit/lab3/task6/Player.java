@@ -18,6 +18,7 @@ public abstract class Player {
         this.defence = defence;
         this.heal = heal;
         this.moveDistance = moveDistance;
+        this.range = range;
     }
 
     public boolean isAlive(){
@@ -91,6 +92,10 @@ public abstract class Player {
     }
 
     public void attack(Player otherPlayer){
+        if (!otherPlayer.isAlive()){
+            System.out.println("Игрок уже мёртв");
+            return;
+        }
         int manhattanDistance = Math.abs(this.pos_x - otherPlayer.pos_x) + Math.abs(this.pos_y - otherPlayer.pos_y);
         if (manhattanDistance <= this.range){
             int damage = -(this.damage > otherPlayer.defence ? this.damage : this.damage / 2);
@@ -102,7 +107,16 @@ public abstract class Player {
     }
 
     public void castHealing(Player player){
-        player.changeHP(this.heal);
+        if (!player.isAlive()){
+            System.out.println("Игрок мёртв");
+            return;
+        }
+        if (this.heal > 0){
+            player.changeHP(this.heal);
+        }
+        else {
+            System.out.println("Вы не умеете лечить");
+        }
     }
 
 @Override
