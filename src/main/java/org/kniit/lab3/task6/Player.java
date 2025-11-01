@@ -71,6 +71,7 @@ public abstract class Player {
         }
         else if (newHP <= 0){
             this.isAlive = false;
+            System.out.printf("Персонаж %s умер\n", this.name);
         }
         else if (newHP > this.maxHP){
             this.curHP = maxHP;
