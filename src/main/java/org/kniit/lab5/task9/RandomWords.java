@@ -1,10 +1,11 @@
 package org.kniit.lab5.task9;
 
 import java.util.Random;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class RandomWords {
-    private String[] randomWords = {
-        "вселенная",
+    private String[] words = {"вселенная",
         "квантовый",
         "бесконечность",
         "созвездие",
@@ -53,12 +54,23 @@ public class RandomWords {
         "портал",
         "конструкция",
         "алгоритм",
-        "интерактивный"
-    };
+        "интерактивный" };
+    private ArrayList<String> randomWords;
+    private int currenWord = 0;
+
+    public RandomWords(){
+        randomWords = new ArrayList<>();
+
+        for (String word : words){
+            randomWords.add(word);
+        }
+
+        Collections.shuffle(randomWords);
+    }
 
     Random random = new Random();
     
     public String getRandomWord(){
-        return this.randomWords[random.nextInt(50)];
+        return randomWords.get(currenWord++ % 50);
     }
 }
