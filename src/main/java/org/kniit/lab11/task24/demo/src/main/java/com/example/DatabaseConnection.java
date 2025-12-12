@@ -1,4 +1,4 @@
-package org.kniit.lab11.task24;
+package com.example;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

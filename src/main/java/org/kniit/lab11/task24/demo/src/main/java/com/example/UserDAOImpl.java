@@ -1,4 +1,4 @@
-package org.kniit.lab11.task24;
+package com.example;
 
 import java.sql.Statement;
 import java.sql.Connection;
